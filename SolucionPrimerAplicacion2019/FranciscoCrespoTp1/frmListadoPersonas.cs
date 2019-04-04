@@ -176,6 +176,7 @@ namespace FranciscoCrespoTp1
             
             try
             {
+
                 int index = dgvPersona.CurrentCell.RowIndex;
                
                 listadoPersonas.RemoveAt(index);
@@ -193,7 +194,7 @@ namespace FranciscoCrespoTp1
         {
             try
             {
-                MessageBox.Show("Row number" + dgvPersona.CurrentCell.RowIndex);
+                
                 
                 
                     cargarPersona(dgvPersona.CurrentCell.RowIndex);
