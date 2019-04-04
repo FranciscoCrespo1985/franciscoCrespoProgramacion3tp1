@@ -148,12 +148,15 @@ namespace FranciscoCrespoTp1
         {
 
             Persona p = new Persona();
+
+
+
+
             try
             {
                 int index = dgvPersona.CurrentCell.RowIndex;
                 if (validarPersona(p))
-                {
-                   
+                {                   
                     listadoPersonas[index] = p;
                 }
             }
@@ -175,7 +178,7 @@ namespace FranciscoCrespoTp1
             {
                 int index = dgvPersona.CurrentCell.RowIndex;
                
-                ////listadoPersonas.RemoveAt(index);
+                listadoPersonas.RemoveAt(index);
 
                 
             }
@@ -184,6 +187,93 @@ namespace FranciscoCrespoTp1
 
             }
             refresh();
+        }
+
+        private void dgvPersona_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Row number" + dgvPersona.CurrentCell.RowIndex);
+                
+                
+                    cargarPersona(dgvPersona.CurrentCell.RowIndex);
+                
+                
+            }
+            catch (NullReferenceException nrf) {
+
+                    
+            }
+                
+        }
+        
+        private void cargarPersona(int index)
+        {
+            try
+            {
+                txtBoxApellido.Text = listadoPersonas[index].apellido;
+                txtBoxNombre.Text = listadoPersonas[index].name;
+                dateTimePicker1.Value = listadoPersonas[index].nacio;
+
+                switch (listadoPersonas[index].sexo)
+                {
+                    case "M":
+                        rBtnMasc.Checked = true;
+                        break;
+                    case "F":
+                        rBtnFem.Checked = true;
+                        break;
+                    case "O":
+                        rBtnOtro.Checked = true;
+                        break;
+                }
+
+                chkRock.Checked = listadoPersonas[index].musicaRock ? true : false;
+                chkOchentas.Checked = listadoPersonas[index].musicaOchentas ? true : false;
+                chkMetal.Checked = listadoPersonas[index].musicaMetal ? true : false;
+                chkJazz.Checked = listadoPersonas[index].musicaJazz ? true : false;
+                chkCumbia.Checked = listadoPersonas[index].musicaCumbia ? true : false;
+                chkClasica.Checked = listadoPersonas[index].musicaClasica ? true : false;
+
+                switch (listadoPersonas[index].color)
+                {
+                    case "Rojo":
+                        cmbColor.SelectedIndex = 0;
+                        break;
+                    case "Azul":
+                        cmbColor.SelectedIndex = 1;
+                        break;
+                    case "Naranja":
+                        cmbColor.SelectedIndex = 2;
+                        break;
+                    case "Verde":
+                        cmbColor.SelectedIndex = 3;
+                        break;
+                    case "Marron":
+                        cmbColor.SelectedIndex = 4;
+                        break;
+                    case "Negro":
+                        cmbColor.SelectedIndex = 5;
+                        break;
+                    case "Plateado":
+                        cmbColor.SelectedIndex = 6;
+                        break;
+                    case "Amarillo":
+                        cmbColor.SelectedIndex = 7;
+                        break;
+                    case "Violeta":
+                        cmbColor.SelectedIndex = 8;
+                        break;
+                }
+
+
+            }
+            catch (ArgumentOutOfRangeException e) {
+            }
+
+        
+
+
         }
     }
 }

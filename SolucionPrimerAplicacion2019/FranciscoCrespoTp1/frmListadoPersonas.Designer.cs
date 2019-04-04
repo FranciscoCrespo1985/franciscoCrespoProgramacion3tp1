@@ -271,6 +271,7 @@
             this.dgvPersona.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersona.Size = new System.Drawing.Size(474, 383);
             this.dgvPersona.TabIndex = 11;
+            this.dgvPersona.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersona_RowEnter);
             // 
             // btnAceptar
             // 
